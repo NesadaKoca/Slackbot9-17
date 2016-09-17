@@ -30,7 +30,10 @@ public class User {
 
     public User(JSONObject json) {
         // TODO: parse a user from the incoming json
-    }
+//        if (json.containsKey("id")) {
+//            this.id = (String) json.get("id");
 
-    // TODO add getters to access private fields
-}
+
+            // TODO add getters to access private fields
+        }
+    }

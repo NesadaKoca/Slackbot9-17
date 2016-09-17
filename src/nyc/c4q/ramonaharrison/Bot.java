@@ -98,4 +98,7 @@ public class Bot {
             System.err.print("Error sending message: " + deleteMessageResponse.getError());
         }
     }
+
+    public void sendMessage(String s) {
+    }
 }
