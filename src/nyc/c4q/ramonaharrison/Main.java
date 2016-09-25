@@ -23,9 +23,9 @@ public class Main {
         // Post a pineapple photo to the #bots channel
         //myBot.sendMessage("http://weknowyourdreams.com/images/pineapple/pineapple-07.jpg");
 
-        GetLastMeassage obj = new GetLastMeassage();
-        myBot.sendMessageToBotsChannel("m");
-        obj.listMessages(Slack.BOTS_CHANNEL_ID);
+        GetLastMessage getLastMessage = new GetLastMessage(); //we create getLastMessage like a reference for the class GetLastMessage
+        // myBot.sendMessageToBotsChannel("m");       // we printed out the text "m" to the Bot's channel
+        getLastMessage.listMessages(Slack.BOTS_CHANNEL_ID, 10);   // we call the method listMessages and we gave the parameter Slack.BOTS_CHANNEL_ID  that is our Bot's channel location
 
 
     }
