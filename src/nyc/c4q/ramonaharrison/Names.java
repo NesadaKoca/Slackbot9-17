@@ -1,9 +1,5 @@
 package nyc.c4q.ramonaharrison;
 
-/**
- * Created by nesadakoca on 9/17/16.
- */
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
@@ -14,15 +10,18 @@ import java.util.Random;
 
 
 public class Names {
+
+    public int numNames = 3;
+
     public String randomName (String input) throws Exception {
         String urlInserted = "";
         String wordToCheck = "";
-        if (input.equals("m")) {
+        if (input.equals("m")) { // check if the parameter input is equal with the String "m"
             urlInserted = "http://deron.meranda.us/data/census-dist-male-first.txt";
-        }else if (input.equals("f")){
+        }else if (input.equals("f")){ // check if the parameter input is equal with the String "m"
             urlInserted = "http://deron.meranda.us/data/census-dist-female-first.txt";
         }
-        stringToURL(urlInserted);
+        stringToURL(urlInserted); // this method check if urlInserted is a real URL, if not is gonna show us an error
 
 
         URL oracle = new URL(urlInserted);
@@ -36,25 +35,27 @@ public class Names {
         while ((inputLine = in.readLine()) != null) {
             //  System.out.println(inputLine);  //this print the whole text page line by line
 
-            String arr[] = inputLine.split(" ", 2);
-            inputLine = arr[0]; //get the first word of the String
-            allNames.add(inputLine);
+            String arr[] = inputLine.split(" ", 2); // take the first line from the url, and save the fisrt word in the arr[0], and the rest in the arr[1]
+            inputLine = arr[0]; //get the first element of the arr[]
+            allNames.add(inputLine); // add all the names that are in the url one by one to our arraylist allNames until the While statement finish
 
         }
 
         in.close();
-        String[] threeRandomNames = new String[3];
 
+        String[] threeRandomNames = new String[numNames];
+        String all = "";
 
         Random random = new Random();
-        String  randomElement = allNames.get(random.nextInt(allNames.size()));
-        threeRandomNames[0] = randomElement;
-        randomElement = allNames.get(random.nextInt(allNames.size()));
-        threeRandomNames[1] = randomElement;
-        randomElement = allNames.get(random.nextInt(allNames.size()));
-        threeRandomNames[2] = randomElement;
 
-        String all = threeRandomNames[0] + "\n" +threeRandomNames[1] + "\n" +threeRandomNames[2];
+        for (int i = 0; i<numNames; i++) {
+
+
+            String randomElement = allNames.get(random.nextInt(allNames.size()));
+            threeRandomNames[i] = randomElement;
+
+            all = all + threeRandomNames[i] + "\n";
+        }
         return all;
     }
 
